@@ -25,10 +25,14 @@ pip-log.txt
 uploads/
 settings/local.py
 .sass-cache/
-static
-docs/_build
+
+
+# docs/_build
+
 .epio-app
 media/
+static/
+data/
 *.sublime-project
 
 # Ignore django key
