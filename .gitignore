@@ -23,20 +23,21 @@ pip-log.txt
 # Ignore project local or generated files
 *.db
 uploads/
-settings/local.py
+settings/settings_dev.py
 .sass-cache/
-
-
-# docs/_build
-
-.epio-app
 media/
 static/
 data/
+.epio-app
 *.sublime-project
 
-# Ignore django key
+# Ignore docs building files
+docs/_build
+docs/_static
+docs/_templates
+
+# Ignore django key file
 .django_key
 
 # Ignore settings files
-settings_epio.py
+settings/settings_epio.py
