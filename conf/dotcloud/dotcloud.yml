@@ -1,3 +1,5 @@
 www:
   type: python
   approot: feindex
+data:
+  type: postgresql
