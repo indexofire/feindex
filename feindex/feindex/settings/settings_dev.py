@@ -3,9 +3,8 @@ from os.path import join
 from feindex.settings.common import *
 
 
+# Google analytics
 GOOGLE_ANALYTICS = False
-
-
 
 # Add useful develop application
 INSTALLED_APPS += (
