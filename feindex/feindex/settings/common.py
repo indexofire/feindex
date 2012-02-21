@@ -1,13 +1,22 @@
 # -*- coding: utf-8 -*-
 # Django settings for feindex project.
+import sys
+from os.path import dirname, abspath, normpath, basename, join
+from feindex.settings import create_secret_key
 
+
+# Project Path
+PROJECT_PATH = normpath(dirname(dirname(abspath(__file__))))
+PROJECT_NAME = basename(PROJECT_PATH)
+
+# Debug
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+# Admin
 ADMINS = (
     ('Administrator', 'admin@example.com'),
 )
-
 MANAGERS = ADMINS
 
 # Local time zone for this installation. Choices can be found here:
@@ -17,10 +26,12 @@ MANAGERS = ADMINS
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'China/Shanghai'
+#TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Asia/Shanghai'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
+#LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-cn'
 
 SITE_ID = 1
