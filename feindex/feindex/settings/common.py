@@ -6,7 +6,7 @@ from feindex.settings import create_secret_key
 
 
 # Project Path
-PROJECT_PATH = normpath(dirname(dirname(abspath(__file__))))
+PROJECT_PATH = normpath(dirname(dirname(dirname(dirname(abspath(__file__))))))
 PROJECT_NAME = basename(PROJECT_PATH)
 
 # Debug
