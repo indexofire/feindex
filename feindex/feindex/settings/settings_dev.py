@@ -21,7 +21,7 @@ MIDDLEWARE_CLASSES += (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME':  join(PROJECT_PATH, 'data/openlabs'),
+        'NAME':  join(PROJECT_PATH, '../data/openlabs'),
         'OPTIONS': {
             'timeout': 10,
         }

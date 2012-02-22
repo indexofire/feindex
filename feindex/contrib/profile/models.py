@@ -68,9 +68,9 @@ class Profile(User):
     def save(self, *args, **kwargs):
         if not self.username:
             self.username = generate_id(
-                first_name=self.first_name,
-                last_name=self.last_name,
-                email=self.email,
+                first_name = self.first_name,
+                last_name  = self.last_name,
+                email      = self.email,
                 )
         super(Profile, self).save(*args, **kwargs)
 

@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
+from django.db import transaction
+from django.contrib.auth.admin import UserAdmin, csrf_protect_m
+from django.utils.translation import ugettext as _
+
 from .models import Profile
 from .forms import ProfileAdminForm
 
-class ProfileAdmin(admin.UserAdmin):
-    """Admin for profile"""
+
+class ProfileAdmin(UserAdmin):
+    """ Admin for profile """
     form = ProfileAdminForm
     add_form_template = None
     fieldsets = [
@@ -40,7 +45,7 @@ class ProfileAdmin(admin.UserAdmin):
         form.base_fields['last_name'].required = True
         return form
 
-    @admin.csrf_protect_m
+    @csrf_protect_m
     @transaction.commit_on_success
     def add_view(self, request, form_url='', extra_context=None):
         # Override the UserAdmin add view and return it's parent.
