@@ -8,14 +8,8 @@ from django.views.generic.base import RedirectView
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    #url(r'^favicon\.ico/$',
-    #    'django.views.generic.simple.redirect_to',
-    #    {'url': '%s%s/img/favicon.ico' % (settings.STATIC_URL, settings.THEME)},
-    #),
-    url(r'^favicon\.ico/$',
-        RedirectView.as_view(
-            url='%s%s/img/favicon.ico' % (settings.STATIC_URL, settings.THEME),
-        ),
+    url(r'^favicon\.ico/$', RedirectView.as_view(
+        url='%s%s/img/favicon.ico' % (settings.STATIC_URL, settings.THEME)),
     ),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
@@ -25,7 +19,7 @@ if settings.DEBUG:
     urlpatterns += patterns('',
         url(r'^%s/(?P<path>.*)$' % settings.MEDIA_URL.strip('/'),
             'django.views.static.serve',
-            {'document_root': settings.MEDIA_ROOT,},
+            {'document_root': settings.MEDIA_ROOT},
         ),
     )
 
