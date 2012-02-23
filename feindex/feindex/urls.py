@@ -24,5 +24,5 @@ if settings.DEBUG:
     )
 
 urlpatterns += patterns('',
-    url(r'^$', include('feincms.urls')),
+    url(r'', include('feincms.urls')),
 )
