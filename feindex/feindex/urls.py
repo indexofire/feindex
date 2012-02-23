@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
-from django.conf import settings
 from django.contrib import admin
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.views.generic.base import RedirectView
 
+#from feincms.module.page.sitemap import PageSitemap
+
 
 admin.autodiscover()
+
+#sitemaps = {
+#    'pages' : PageSitemap,
+#}
 
 urlpatterns = patterns('',
     url(r'^favicon\.ico/$', RedirectView.as_view(
@@ -13,6 +19,10 @@ urlpatterns = patterns('',
     ),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    # sitemap not working
+    #url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
+    #    {'sitemaps': sitemaps},
+    #),
 )
 
 if settings.DEBUG:

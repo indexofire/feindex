@@ -173,3 +173,8 @@ LOGGING = {
 
 # Use new feincms reverse
 FEINCMS_REVERSE_MONKEY_PATCH = False
+
+# Feincms richtext editor
+FEINCMS_RICHTEXT_INIT_CONTEXT = {
+    'TINYMCE_JS_URL': '%slibs/tiny_mce/tiny_mce.js' % STATIC_URL,
+}

@@ -28,26 +28,34 @@ Page.register_extensions(
 # Register Templates used in pages
 Page.register_templates(
     {
-        'key': 'c1',
-        'title': _('One Columns Page'),
-        'path': 'col_one.html',
+        'key': 'index',
+        'title': _('Index Page'),
+        'path': 'site_index.html',
         'regions': (
             ('main', _('Main content area')),
         ),
     },
     {
-        'key': 'c2',
+        'key': 'col_1',
+        'title': _('One Columns Page'),
+        'path': 'site_col_one.html',
+        'regions': (
+            ('main', _('Main content area')),
+        ),
+    },
+    {
+        'key': 'col_2',
         'title': _('Two Columns Page'),
-        'path': 'col_two.html',
+        'path': 'site_col_two.html',
         'regions': (
             ('main', _('Main content area')),
             ('left', _('Left Side'), 'inherited'),
         ),
     },
     {
-        'key': 'c3',
+        'key': 'col_3',
         'title': _('Three Columns Page'),
-        'path': 'col_three.html',
+        'path': 'site_col_three.html',
         'regions': (
             ('main', _('Main content area')),
             ('sidebar', _('Sidebar'), 'inherited'),
@@ -55,15 +63,7 @@ Page.register_templates(
         ),
     },
     {
-        'key': 'index',
-        'title': _('Index Page'),
-        'path': 'index.html',
-        'regions': (
-            ('main', _('Main content area')),
-        ),
-    },
-    {
-        'key': 'uc',
+        'key': 'under_construction',
         'title': _('Under Construction'),
         'path': 'under_construction.html',
         'regions': (
@@ -71,7 +71,7 @@ Page.register_templates(
         ),
     },
     {
-        'key': 'labm',
+        'key': 'lab_member',
         'title': _('Lab Member'),
         'path': 'isotope.html',
         'regions': (

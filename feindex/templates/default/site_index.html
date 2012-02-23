@@ -1,5 +1,5 @@
 {% extends "site_base.html" %}
-{% load i18n article_tags account_tags applicationcontent_tags %}
+{% load i18n applicationcontent_tags %}
 
 {% block extra_head %}
 <link rel="stylesheet" href="{{ THEME_URL }}js/flexslider/flexslider.css" type="text/css"/>
@@ -57,34 +57,6 @@ $(window).load(function() {
 </div>
 <!-- intro end -->
 
-<div class="container pad">
-<div class="row">
-  <div class="overline">
-    <h3 style="margin-left:20px">Who We Are ?</h3>
-  </div>
-  <div class="span12">
-  <h3 style="background: #EEE;padding: 10px;">最新成员</h3>
-  {% get_accounts 12 as accounts %}
-  {% for account in accounts %}
-    {% if forloop.first %}
-    <ul style="padding: 1px">
-    {% endif %}
-    <li style="list-style:none; display: inline;padding:1px"><a href="{% app_reverse 'account-profile-detail' 'account.urls' account.user.username %}" title="{{ account.name }}"><img src="{{ account.get_avatar_url }}" height="48" width="48" style="border:1px solid #BCBCBC; padding: 1px" /></a></li>
-    {% if forloop.last %}
-    </ul>
-    {% endif %}
-  {% endfor %}
-  </div>
-</div>
-</div>
-
-<div class="container pad">
-<div class="row">
-  <div class="overline">
-    <h3 style="margin-left:20px">Where We Are ?</h3>
-  </div>
-</div>
-</div>
 {% endblock %}
 
 
@@ -106,16 +78,7 @@ $(window).load(function() {
   </div>
   <div class="span4">
     <h3>资料更新</h3>
-    {% get_articles 5 as recent %}
-    {% for article in recent %}
-      {% if forloop.first %}
-      <ul>
-      {% endif %}
-        <li><a href="{% app_reverse 'articles_display_article' 'article.urls' article.publish_date.year article.slug %}" title="Read this article">{{ article.title }}</a></li>
-      {% if forloop.last %}
-      </ul>
-      {% endif %}
-    {% endfor %}
+
   </div>
   <div class="span4">
     <h3>联系我们</h3>
