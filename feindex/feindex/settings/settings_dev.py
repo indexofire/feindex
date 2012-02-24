@@ -32,3 +32,10 @@ DATABASES = {
 INTERNAL_IPS = (
     '127.0.0.1',
 )
+
+# Theme setting
+THEME = 'default'
+
+STATICFILES_DIRS += (
+    join(PROJECT_PATH, 'assets/%s' % THEME),
+)

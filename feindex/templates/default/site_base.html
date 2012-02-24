@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 {% endblock meta %}
   <title>{% block title %}{{ feincms_page.title }}{% endblock title %}</title>
-  <link rel="shortcut icon" href="{{ THEME_URL }}img/favicon.ico"/>
+  <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico"/>
   <link href="http://fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css"/>
   <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <script type="text/javascript" src="{% if debug %}{{ STATIC_URL }}libs/jquery/jquery-1.7.1.min.js{% else %}https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js{% endif %}"></script>
@@ -87,12 +87,12 @@
 
 {% if debug %}
 <!-- load less -->
-<link rel="stylesheet/less" href="{{ STATIC_URL }}default/less/index.less"/>
+<link rel="stylesheet/less" href="{{ STATIC_URL }}less/index.less"/>
 <script src="{{ STATIC_URL }}libs/less/less-1.2.1.min.js"></script>
 <script src="{{ STATIC_URL }}libs/bootstrap/js/bootstrap-transition.js"></script>
 <script src="{{ STATIC_URL }}libs/bootstrap/js/bootstrap-alert.js"></script>
 <script src="{{ STATIC_URL }}libs/bootstrap/js/bootstrap-modal.js"></script>
-<script src="{{ STATIC_URL }}libs/bootstrap/js/bootstrap-dropdown.js"></script>-->
+<script src="{{ STATIC_URL }}libs/bootstrap/js/bootstrap-dropdown.js"></script>
 <script src="{{ STATIC_URL }}libs/bootstrap/js/bootstrap-scrollspy.js"></script>
 <script src="{{ STATIC_URL }}libs/bootstrap/js/bootstrap-tab.js"></script>
 <script src="{{ STATIC_URL }}libs/bootstrap/js/bootstrap-tooltip.js"></script>
