@@ -73,12 +73,9 @@ STATIC_URL = '/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
     join(PROJECT_PATH, 'assets'),
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
 )
 
-# Set theme
+# Set default theme, and change it in your own settings
 THEME = 'default'
 
 # List of finder classes that know how to find static files in
@@ -90,9 +87,9 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
+# Make sure you have the privilieges to write in the data directory
 SECRET_FILE = join(PROJECT_PATH, '../data', '.secret_key')
 SECRET_KEY = create_secret_key(SECRET_FILE)
-
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

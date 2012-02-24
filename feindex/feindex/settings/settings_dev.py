@@ -37,5 +37,7 @@ INTERNAL_IPS = (
 THEME = 'default'
 
 STATICFILES_DIRS += (
+    # because usually no `libs` directory in the theme directory so that
+    # set theme directory to staticfiles_dir.
     join(PROJECT_PATH, 'assets/%s' % THEME),
 )

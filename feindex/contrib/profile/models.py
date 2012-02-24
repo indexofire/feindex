@@ -22,12 +22,15 @@ def generate_id(f_name, l_name, email):
     return '%s%s%s' % (f_name, l_name, email)
 
 class Profile(User):
+    """
+    User profile models for import other extensions
+    """
     objects = UserManager()
     _extensions_imported = False
 
     @classmethod
     def remove_field(cls, f_name):
-        # Removes the field form local fields list
+        """ Removes the field from local fields list """
         cls._meta.local_fields = [f for f in cls._meta.local_fields if f.name != f_name]
 
         # Removes the field setter if exists

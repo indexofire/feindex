@@ -39,7 +39,15 @@
             </li>
           {% endfor %}
           </ul>
-          <p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>
+          <p class="navbar-text pull-right">Logged in as <a href="#menu1" class="dropdown-toggle" data-toggle="dropdown">{% trans 'username' %}<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </p>
         </div>
       </div>
     </div>
@@ -47,7 +55,7 @@
   <!-- header end -->
 
 <div class="container" style="margin-top: 60px">
-  {% feincms_breadcrumbs feincms_page %}
+  <div class="pad">{% feincms_breadcrumbs feincms_page %}</div>
 </div>
 
   <!-- content start -->
@@ -109,6 +117,10 @@
 {% endif %}
 
 </body>
+
+<script type="text/javascript">
+$('.dropdown-toggle').dropdown();
+</script>
 {% if GOOGLE_ANALYTICS %}
 <script type="text/javascript">
 var _gaq = _gaq || [];
