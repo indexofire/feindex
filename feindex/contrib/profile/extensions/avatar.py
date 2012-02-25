@@ -26,7 +26,7 @@ def register(cls, admin_cls):
     if admin_cls:
         if admin_cls.fieldsets:
             admin_cls.fieldsets.append((_('Pictures'),
-                { 'fields': ('avatar', 'posh_avatar'),
+                {'fields': ('avatar', 'posh_avatar'),
                     'classes': ('collapse',)}
                 )
             )

@@ -8,7 +8,7 @@ def register(cls, admin_cls):
     cls.add_to_class(
         'addresses',
         models.ManyToManyField(
-            'profiles.Address',
+            'profile.Address',
             related_name='addresses',
             blank=True,
         ),

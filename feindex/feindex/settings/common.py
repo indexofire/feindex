@@ -177,7 +177,8 @@ LOGGING = {
     }
 }
 
-
+# Auth definition
+AUTH_PROFILE_MODULE = 'contrib.profile.Profile'
 
 # Use new feincms reverse
 FEINCMS_REVERSE_MONKEY_PATCH = False

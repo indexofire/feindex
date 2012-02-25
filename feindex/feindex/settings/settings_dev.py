@@ -28,6 +28,9 @@ DATABASES = {
     }
 }
 
+# If Databases is sqlite3, set this one False
+USE_TZ = False
+
 # Set internal ip
 INTERNAL_IPS = (
     '127.0.0.1',
@@ -36,8 +39,22 @@ INTERNAL_IPS = (
 # Theme setting
 THEME = 'default'
 
+# Add static directory
 STATICFILES_DIRS += (
     # because usually no `libs` directory in the theme directory so that
     # set theme directory to staticfiles_dir.
     join(PROJECT_PATH, 'assets/%s' % THEME),
+)
+
+#
+SOUTH_MIGRATION_MODULES = {
+    #'profile': 'contrib.profile.migrations.porfile',
+    #'page': 'form.migrate.page',
+}
+
+# Profile Module and extension
+PROFILE_EXTENSIONS = (
+    'contrib.profile.extensions.avatar',
+    'contrib.profile.extensions.title',
+    'contrib.profile.modules.address.extensions.address',
 )

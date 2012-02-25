@@ -149,3 +149,6 @@ Page.create_content_type(
 
 # Add gallery content type
 #Page.create_content_type(GalleryContent)
+
+
+
