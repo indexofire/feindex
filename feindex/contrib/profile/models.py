@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from django.db import transaction
 from django.conf import settings
+from django.db import transaction
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.contrib.auth.models import User, UserManager
 from django.contrib.auth.admin import UserAdmin, csrf_protect_m
 from django.core.urlresolvers import get_callable
 from django.utils.translation import ugettext as _
-#from incuna.utils.unique_id import generate_id
 
 
-
-#if getattr(settings, 'AUTH_PROFILE_MODULE', False) and settings.AUTH_PROFILE_MODULE == "profiles.Profile":
-if getattr(settings, 'AUTH_PROFILE_MODULE', False) and settings.AUTH_PROFILE_MODULE == "profile.Profile":
+if getattr(settings, 'AUTH_PROFILE_MODULE', False) and \
+    settings.AUTH_PROFILE_MODULE == "profile.Profile":
     def get_profile(self):
         """Returns profile for this user."""
         return self.profile
@@ -36,8 +36,7 @@ class Profile(User):
         cls._meta.local_fields = [f for f in cls._meta.local_fields if f.name != f_name]
 
         # Removes the field setter if exists
-        if hasattr(cls, f_name):
-            delattr(cls, f_name)
+        if hasattr(cls, f_name): delattr(cls, f_name)
 
     @classmethod
     def register_extension(cls, register_fn):
@@ -71,12 +70,12 @@ class Profile(User):
                 raise
 
     def save(self, *args, **kwargs):
-        if not self.username:
-            self.username = generate_id(
-                first_name = self.first_name,
-                last_name  = self.last_name,
-                email      = self.email,
-                )
+        #if not self.username:
+        #    self.username = generate_id(
+        #        first_name = self.first_name,
+        #        last_name  = self.last_name,
+        #        email      = self.email,
+        #        )
         super(Profile, self).save(*args, **kwargs)
 
     def get_full_name(self):
@@ -110,14 +109,14 @@ class ProfileAdmin(UserAdmin):
     add_form_template = None
     fieldsets = [
         (None, {
-            'fields': ['email', 'password', 'first_name','last_name',]
+            'fields': ['user', 'email', 'password', 'first_name','last_name',]
         }),
         (_('Other options'), {
             'classes': ['collapse',],
             'fields': ['is_active', 'last_login', 'date_joined',],
         }),
     ]
-    list_display = ['email', 'first_name', 'last_name', ]
+    list_display = ['username', 'email', 'first_name', 'last_name', ]
     list_display_links = ['email',]
     search_fields = ['email',  'first_name', 'last_name',]
     readonly_fields = ['last_login', 'date_joined', ]
@@ -143,9 +142,9 @@ class ProfileAdmin(UserAdmin):
 
     @csrf_protect_m
     @transaction.commit_on_success
-    def add_view(self, request, form_url='', extra_context=None):
+    def add_view(self, request, **kwargs):
         # Override the UserAdmin add view and return it's parent.
-        return super(UserAdmin, self).add_view(request, form_url, extra_context)
+        return super(UserAdmin, self).add_view(request, **kwargs)
 
     def save_form(self, request, form, change):
         """If this is an add then set the password."""
@@ -154,6 +153,13 @@ class ProfileAdmin(UserAdmin):
             user.set_password(user.password)
         return user
 
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    """
+    Post a signal to create a matching profile when a user object is created.
+    """
+    if created: profile, new = Profile.objects.get_or_create(user=instance)
 
 # Register extensions listed in the settings
 PROFILE_EXTENSIONS = getattr(settings, 'PROFILE_EXTENSIONS', None)

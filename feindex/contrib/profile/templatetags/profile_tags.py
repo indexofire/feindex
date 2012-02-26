@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import template
-from profile.models import Profile
+from contrib.profile.models import Profile
 
 
 register = template.Library()

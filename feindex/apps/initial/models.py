@@ -4,7 +4,7 @@ from feincms.module.page.models import Page
 from feincms.content.application.models import ApplicationContent
 from feincms.content.richtext.models import RichTextContent
 from feincms.content.image.models import ImageContent
-from feincms.content.comments.models import CommentsContent
+#from feincms.content.comments.models import CommentsContent
 from feincms.content.medialibrary.v2 import MediaFileContent
 #from feincms.content.raw.models import RawContent
 #from feincms_markup.models import MarkupContent

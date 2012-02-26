@@ -54,6 +54,7 @@ SOUTH_MIGRATION_MODULES = {
 
 # Profile Module and extension
 PROFILE_EXTENSIONS = (
+    'contrib.profile.extensions.overview',
     'contrib.profile.extensions.avatar',
     'contrib.profile.extensions.title',
     'contrib.profile.modules.address.extensions.address',

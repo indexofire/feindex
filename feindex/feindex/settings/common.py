@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
 # Django settings for feindex project.
-import sys
-from os.path import dirname, abspath, normpath, basename, join
 from django.utils.translation import ugettext_lazy as _
-from feindex.settings import create_secret_key
+from os.path import join
+from feindex.settings import create_secret_key, PROJECT_PATH, PROJECT_NAME
 
-
-# Project Path
-PROJECT_PATH = normpath(dirname(dirname(dirname(abspath(__file__)))))
-PROJECT_NAME = basename(PROJECT_PATH)
 
 # Debug
 DEBUG = True
