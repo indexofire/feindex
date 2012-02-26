@@ -1,0 +1,560 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-17 23:51-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+#: forms.py:28
+#, python-format
+msgid "%(label)s"
+msgstr ""
+
+#: forms.py:31
+#, python-format
+msgid "%(error)s"
+msgstr ""
+
+#: forms.py:47
+msgid "Username"
+msgstr "用户名称"
+
+#: forms.py:49
+msgid ""
+"Username must contain only letters, numbers, dots                 and "
+"underscores."
+msgstr "用户名称只能使用英文字母，数字，小数点和下划线"
+
+#: forms.py:55 forms.py:181 templates/account/profile_detail.html:42
+msgid "Email"
+msgstr "电子邮件"
+
+#: forms.py:59
+msgid "Create password"
+msgstr "创建密码"
+
+#: forms.py:63
+msgid "Repeat password"
+msgstr "重复密码"
+
+#: forms.py:78
+msgid "This username is already taken."
+msgstr "该用户名已被使用。"
+
+#: forms.py:80
+msgid "This username is not allowed."
+msgstr "该用户名被禁止使用。"
+
+#: forms.py:86 forms.py:229
+msgid "This email is already in use. Please supply a different email."
+msgstr "该电子邮件地址已被使用，请更换一个可使用的电子邮件地址。"
+
+#: forms.py:98
+msgid "The two password fields didn't match."
+msgstr "密码不一致，请确认输入2个一致的密码。"
+
+#: forms.py:148
+msgid "I have read and agree to the Terms of Service"
+msgstr "我已经阅读并会遵守网站协议。"
+
+#: forms.py:150
+msgid "You must agree to the terms to register."
+msgstr "你必须同意网站协议才能通过注册。"
+
+#: forms.py:160
+msgid "Email or username"
+msgstr "电子邮件地址或用户名称"
+
+#: forms.py:161
+msgid "Either supply us with your email or username."
+msgstr "请提供你的用户名称和电子邮件地址。"
+
+#: forms.py:164
+msgid "Password"
+msgstr "密码"
+
+#: forms.py:170
+#, python-format
+msgid "Remember me for %(days)s"
+msgstr "记住登录状态 %(days)s 天"
+
+#: forms.py:181
+msgid "Please supply your email."
+msgstr "请提供你的电子邮件地址"
+
+#: forms.py:197
+msgid ""
+"Please enter a correct                     username or email and password. "
+"Note that both fields are                     case-sensitive."
+msgstr "请输入正确的用户名称/电子邮件，以及密码。注意2者都区分大小写。"
+
+#: forms.py:206 templates/account/email_confirm_complete.html:6
+msgid "New email"
+msgstr "新的电子邮件"
+
+#: forms.py:227
+msgid "You're already known under this email."
+msgstr "你的电子邮件地址已经注册在本站了。"
+
+#: forms.py:247
+msgid "First name"
+msgstr "名"
+
+#: forms.py:252
+msgid "Last name"
+msgstr "姓"
+
+#: managers.py:228
+#, python-format
+msgid "No profile found for %(username)s"
+msgstr "没有发现用户%(username)s的档案。"
+
+#: models.py:50
+msgid "user"
+msgstr "用户"
+
+#: models.py:54
+msgid "last active"
+msgstr "最后登录"
+
+#: models.py:57
+msgid "The last datetime the user was active."
+msgstr "该用户最后最近活动时间"
+
+#: models.py:60
+msgid "activation key"
+msgstr "激活码"
+
+#: models.py:65
+msgid "notification of activation"
+msgstr "激活通知"
+
+#: models.py:67
+msgid ""
+"Designates whether this user has already got a             notification "
+"about activating their account."
+msgstr ""
+
+#: models.py:71
+msgid "unconfirmed email address"
+msgstr "没有确认的电子邮件地址"
+
+#: models.py:73
+msgid ""
+"Temporary email address when the user requests an email            change."
+msgstr ""
+
+#: models.py:77
+msgid "unconfirmed email verification key"
+msgstr ""
+
+#: models.py:82
+msgid "creation date of email confirmation key"
+msgstr ""
+
+#: models.py:89
+msgid "account registration"
+msgstr "注册账户"
+
+#: models.py:90
+msgid "account registrations"
+msgstr "注册账户"
+
+#: models.py:211
+msgid "Open"
+msgstr "对所有用户开放"
+
+#: models.py:212
+msgid "Registered"
+msgstr "只对注册用户开放"
+
+#: models.py:213
+msgid "Closed"
+msgstr "不对别人开放"
+
+#: models.py:220
+msgid "Avatar"
+msgstr "头像"
+
+#: models.py:224
+msgid "A personal image displayed in your profile."
+msgstr ""
+
+#: models.py:227
+msgid "Privacy"
+msgstr "档案查看权限"
+
+#: models.py:231
+msgid "Designates who can view your profile."
+msgstr ""
+
+#: models.py:335
+msgid "language"
+msgstr ""
+
+#: settings.py:44
+msgid "a month"
+msgstr "一个月"
+
+#: views.py:535
+msgid "You don't have permission to view             this profile."
+msgstr "你没有权限查看该档案"
+
+#: templates/account/activate_fail.html:4
+msgid "Account Activation Failed."
+msgstr "账户激活失败"
+
+#: templates/account/activate_fail.html:7
+msgid "Your account could not be activated.."
+msgstr "你的账户无法被激活"
+
+#: templates/account/activate_fail.html:8
+msgid ""
+"Your account could not be activated. This could be because your activation "
+"link has aged."
+msgstr ""
+
+#: templates/account/activate_fail.html:9
+msgid ""
+"Please try signing up again or contact us if you think something went wrong."
+msgstr ""
+
+#: templates/account/disabled.html:4
+msgid "Disabled Account"
+msgstr "禁用账户"
+
+#: templates/account/disabled.html:7
+msgid "Your account has been disabled"
+msgstr ""
+
+#: templates/account/disabled.html:8
+msgid "It seems your account has been disabled."
+msgstr ""
+
+#: templates/account/disabled.html:9
+msgid ""
+"If you feel that injustice has been done to you, feel free to contact the "
+"administrators to find out why"
+msgstr ""
+
+#: templates/account/email_change_complete.html:4
+msgid "Email Verification"
+msgstr ""
+
+#: templates/account/email_change_complete.html:7
+msgid "Confirm your new email"
+msgstr ""
+
+#: templates/account/email_change_complete.html:8
+#, python-format
+msgid "You have received an email at %(email)s."
+msgstr ""
+
+#: templates/account/email_change_complete.html:9
+#, python-format
+msgid ""
+"To associate this email address with your account (%(username)s) click on "
+"the link provided in this email."
+msgstr ""
+
+#: templates/account/email_confirm_complete.html:4
+msgid "Email Changed!"
+msgstr ""
+
+#: templates/account/email_confirm_complete.html:8
+msgid ""
+"Your new email address is saved. You can continue using userena with this "
+"email."
+msgstr ""
+
+#: templates/account/email_confirm_fail.html:4
+msgid "Email Verification Failed."
+msgstr ""
+
+#: templates/account/email_confirm_fail.html:6
+msgid "Your email could not be verified.."
+msgstr ""
+
+#: templates/account/email_confirm_fail.html:9
+msgid "Your email could not be verified..."
+msgstr ""
+
+#: templates/account/email_confirm_fail.html:10
+msgid "You could try changing it again in your account settings."
+msgstr ""
+
+#: templates/account/email_form.html:4 templates/account/email_form.html:25
+msgid "Change Email"
+msgstr ""
+
+#: templates/account/email_form.html:9 templates/account/password_form.html:9
+#: templates/account/profile_detail.html:9
+#: templates/account/profile_form.html:9
+msgid "your picture"
+msgstr ""
+
+#: templates/account/email_form.html:11
+#: templates/account/password_form.html:11
+#: templates/account/profile_detail.html:11
+#: templates/account/profile_form.html:11
+msgid "Job title"
+msgstr ""
+
+#: templates/account/email_form.html:11
+#: templates/account/password_form.html:11
+#: templates/account/profile_detail.html:11
+#: templates/account/profile_form.html:11
+msgid "Expertise"
+msgstr ""
+
+#: templates/account/email_form.html:14
+#: templates/account/password_form.html:14
+#: templates/account/profile_detail.html:15
+#: templates/account/profile_form.html:15
+msgid "view details"
+msgstr ""
+
+#: templates/account/email_form.html:15
+#: templates/account/password_form.html:15
+#: templates/account/profile_detail.html:16
+#: templates/account/profile_form.html:16
+msgid "edit details"
+msgstr ""
+
+#: templates/account/email_form.html:16
+#: templates/account/password_form.html:16
+#: templates/account/profile_detail.html:17
+#: templates/account/profile_form.html:17
+msgid "change password"
+msgstr "修改密码"
+
+#: templates/account/email_form.html:17
+#: templates/account/password_form.html:17
+#: templates/account/profile_detail.html:18
+#: templates/account/profile_form.html:18
+msgid "change email"
+msgstr "修改电子邮件"
+
+#: templates/account/password_complete.html:4
+msgid "Password Changed"
+msgstr ""
+
+#: templates/account/password_complete.html:6
+msgid "Your password has been changed"
+msgstr "你的密码已经被修改。"
+
+#: templates/account/password_complete.html:9
+msgid "From now on you can use your new password to signin"
+msgstr ""
+
+#: templates/account/password_form.html:4
+#: templates/account/password_form.html:25
+msgid "Change Password"
+msgstr "修改密码"
+
+#: templates/account/password_reset_complete.html:4
+msgid "Password Reset"
+msgstr "重设密码"
+
+#: templates/account/password_reset_complete.html:5
+msgid "Your password has been reset"
+msgstr "你的密码已经被重置。"
+
+#: templates/account/password_reset_complete.html:7
+msgid "You can now "
+msgstr ""
+
+#: templates/account/password_reset_complete.html:7
+msgid "signin"
+msgstr "登录"
+
+#: templates/account/password_reset_complete.html:7
+msgid "with your new password."
+msgstr "用你的新密码"
+
+#: templates/account/password_reset_confirm_form.html:4
+#: templates/account/password_reset_confirm_form.html:9
+#: templates/account/password_reset_confirm_form.html:13
+#: templates/account/password_reset_form.html:4
+#: templates/account/password_reset_form.html:9
+msgid "Reset Password"
+msgstr ""
+
+#: templates/account/password_reset_done.html:4
+#: templates/account/password_reset_done.html:5
+msgid "Password reset email sent"
+msgstr ""
+
+#: templates/account/password_reset_done.html:8
+msgid ""
+"An e-mail has been sent to you which explains how to reset your password."
+msgstr ""
+
+#: templates/account/password_reset_form.html:14
+msgid "Send Password"
+msgstr "发送密码"
+
+#: templates/account/profile_detail.html:4
+msgid "profile"
+msgstr "档案"
+
+#: templates/account/profile_detail.html:26
+msgid "Personal Details"
+msgstr "个人信息"
+
+#: templates/account/profile_detail.html:28
+msgid "Name"
+msgstr "名称"
+
+#: templates/account/profile_detail.html:31
+#: templates/account/profile_detail.html:33
+msgid "Gender"
+msgstr "性别"
+
+#: templates/account/profile_detail.html:31
+msgid "Male"
+msgstr "男性"
+
+#: templates/account/profile_detail.html:33
+msgid "Female"
+msgstr "女性"
+
+#: templates/account/profile_detail.html:36
+msgid "Day of Birth"
+msgstr "出生日期"
+
+#: templates/account/profile_detail.html:37
+msgid "Age"
+msgstr "年龄"
+
+#: templates/account/profile_detail.html:38
+msgid "Company"
+msgstr "单位"
+
+#: templates/account/profile_detail.html:39
+msgid "Telephone"
+msgstr "电话"
+
+#: templates/account/profile_detail.html:40
+msgid "Cell Phone"
+msgstr "手机"
+
+#: templates/account/profile_detail.html:43
+msgid "qq"
+msgstr "QQ"
+
+#: templates/account/profile_detail.html:44
+msgid "msn"
+msgstr "MSN"
+
+#: templates/account/profile_detail.html:45
+msgid "Weibo"
+msgstr "微薄"
+
+#: templates/account/profile_detail.html:51
+msgid "Profesional Profile"
+msgstr ""
+
+#: templates/account/profile_form.html:4
+msgid "account setup"
+msgstr "账户设置"
+
+#: templates/account/profile_form.html:27
+msgid "save changes"
+msgstr "保存修改"
+
+#: templates/account/profile_list.html:4
+msgid "Profiles List"
+msgstr "用户档案列表"
+
+#: templates/account/profile_list.html:7
+msgid "Profiles"
+msgstr "档案"
+
+#: templates/account/profile_list.html:18
+msgid "previous"
+msgstr ""
+
+#: templates/account/profile_list.html:21
+msgid "Page"
+msgstr "页面"
+
+#: templates/account/profile_list.html:21
+msgid "of"
+msgstr ""
+
+#: templates/account/profile_list.html:24
+msgid "next"
+msgstr ""
+
+#: templates/account/signin_form.html:4 templates/account/signin_form.html:8
+#: templates/account/signin_form.html:13 templates/account/signin_form.html:33
+msgid "sign in"
+msgstr "登录"
+
+#: templates/account/signin_form.html:9
+msgid "You have signed in!"
+msgstr "你已经登录"
+
+#: templates/account/signin_form.html:34
+msgid "Forgot your password?"
+msgstr ""
+
+#: templates/account/signout.html:4
+msgid "sign out"
+msgstr "注销"
+
+#: templates/account/signout.html:7
+msgid "You have been signed out"
+msgstr "你已经注销"
+
+#: templates/account/signout.html:8
+msgid "Click here to sign in!"
+msgstr "点击这里登录"
+
+#: templates/account/signup_complete.html:4
+msgid "sign up done!"
+msgstr "注册完成"
+
+#: templates/account/signup_complete.html:7
+#: templates/account/signup_form.html:4 templates/account/signup_form.html:8
+#: templates/account/signup_form.html:13 templates/account/signup_form.html:28
+msgid "sign up"
+msgstr "注册"
+
+#: templates/account/signup_complete.html:8
+msgid "Thank you for signing up with us!"
+msgstr "感谢你加入我们"
+
+#: templates/account/signup_complete.html:11
+msgid ""
+"You have been send an e-mail with an activation link to the supplied email."
+msgstr "已经有一封账户激活邮件发送，请注意到你的注册邮箱中查收。"
+
+#: templates/account/signup_complete.html:12
+#, python-format
+msgid ""
+"We will store your signup information for %(userena_activation_days)s days "
+"on our server. "
+msgstr ""
+
+#: templates/account/signup_complete.html:14
+msgid "You can now use the supplied credentials to signin."
+msgstr ""
+
+#: templates/account/signup_form.html:9
+msgid "You have been a member of this site"
+msgstr ""

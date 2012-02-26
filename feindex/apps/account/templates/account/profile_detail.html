@@ -1,0 +1,59 @@
+{% extends 'account/account_base.html' %}
+{% load i18n applicationcontent_tags %}
+
+{% block title %}{{ profile.user.username }}{% trans "profile" %}{% endblock %}
+
+{% block content %}
+<div id="profile-header">
+  <div id="personal-info" class="fixed">
+    <a id="picture-of-you" title="{% trans 'your picture' %}" rel="prettyPhoto"><img src="{{ profile.get_avatar_url }}"></a>
+    <h2 id="name">{{ profile.name }}</h2>
+    <h3 id="what-you-do">{% trans "Job title" %} / {% trans "Expertise" %}</h3>
+  </div>
+  {% if user.username == profile.user.username %}
+  <ul id="nav" class="fixed">
+    <li class="selected"><span>{% trans "view details" %}</span></li>
+    <li><a href="{% app_reverse 'account-profile-edit' 'account.urls' user.username %}">{% trans "edit details" %}</a></li>
+    <li><a href="{% app_reverse 'account-password-change' 'account.urls' user.username %}">{% trans "change password" %}</a></li>
+    <li><a href="{% app_reverse 'account-email-change' 'account.urls' user.username %}">{% trans "change email" %}</a></li>
+  </ul>
+  {% endif %}
+  <div class="divider"></div>
+</div>
+<div id="profile-content" class="fixed">
+  <div id="cv-1">
+    <div class="cv-section col-1 fixed">
+      <h2 class="cv-section-name">{% trans "Personal Details" %}</h2>
+      <ul class="cv-section-items">
+        <li class="cv-item"><span class="topic">{% trans "Name" %}:</span>{{ profile.name }}</li>
+        {% if profile.gender %}
+        {% if profile.gender == 1 %}
+        <li class="cv-item"><span class="topic">{% trans "Gender" %}:</span>{% trans "Male" %}</li>
+        {% else %}
+        <li class="cv-item"><span class="topic">{% trans "Gender" %}:</span>{% trans "Female" %}</li>
+        {% endif %}
+        {% endif %}
+        {% if profile.birth_date %}<li class="cv-item"><span class="topic">{% trans "Day of Birth" %}:</span>{{ profile.birth_date }}</li>{% endif %}
+        {% if profile.age %}<li class="cv-item"><span class="topic">{% trans "Age" %}:</span>{{ profile.age }}</li>{% endif %}
+        {% if profile.company %}<li class="cv-item"><span class="topic">{% trans "Company" %}:</span>{{ profile.company }}</li>{% endif %}
+        {% if profile.telephone %}<li class="cv-item"><span class="topic">{% trans "Telephone" %}:</span>{{ profile.telephone }}</li>{% endif %}
+        {% if profile.cell_phone %}<li class="cv-item"><span class="topic">{% trans "Cell Phone" %}:</span>{{ profile.cell_phone }}</li>{% endif %}
+        {% if profile.email %}
+        <li class="cv-item"><span class="topic">{% trans "Email" %}:</span><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>{% endif %}
+        {% if profile.qq %}<li class="cv-item"><span class="topic">{% trans "qq" %}:</span>{{ profile.qq }}</li>{% endif %}
+        {% if profile.msn %}<li class="cv-item"><span class="topic">{% trans "msn" %}:</span>{{ profile.msn }}</li>{% endif %}
+        {% if profile.weibo %}<li class="cv-item"><span class="topic">{% trans "Weibo" %}:</span>{{ profile.weibo }}</li>{% endif %}
+        <li class="cv-item"></li>
+      </ul>
+    </div>
+    {% if profile.intro %}
+    <div class="cv-section col-1 fixed">
+      <h2 class="cv-section-name">{% trans "Profesional Profile" %}</h2>
+      <ul class="cv-section-items">
+        <li class="cv-item"><p>{{ profile.intro }}</p></li>
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

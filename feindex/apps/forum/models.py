@@ -12,7 +12,7 @@ from django.db.models import Sum
 from feincms.content.application.models import app_reverse
 from apps.forum.settings import *
 from apps.forum.managers import TopicManager
-from apps.profile.models import UserProfile
+from contrib.profile.models import Profile
 
 __all__ = [
     'Config',
@@ -69,7 +69,7 @@ class Topic(models.Model):
     Topic is the top of a thread.
     """
     forum = models.ForeignKey(Forum, verbose_name=_('Forum'))
-    posted_by = models.ForeignKey(UserProfile)
+    posted_by = models.ForeignKey(User)
     subject = models.CharField(max_length=999)
     num_views = models.IntegerField(default=0)
     num_replies = models.PositiveSmallIntegerField(default=0)
@@ -110,7 +110,7 @@ class Post(models.Model):
     Posts is other threads of a topic.
     """
     topic = models.ForeignKey(Topic, verbose_name=_('Topic'))
-    posted_by = models.ForeignKey(UserProfile)
+    posted_by = models.ForeignKey(User)
     poster_ip = models.IPAddressField()
     topic_post = models.BooleanField(default=False)
     message = models.TextField()

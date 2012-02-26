@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from feincms.content.application.models import app_reverse
 from apps.forum.forms import EditPostForm, NewPostForm
 from apps.forum.models import Topic, Forum, Post
-from apps.basic.utils import cache_result
+from apps.initial.utils import cache_result
 
 
 @cache_result
@@ -28,9 +28,9 @@ def forum_index(request, tpl="forum/forum_index.html"):
         'created_on',
         'forum__slug',
         'forum__name',
-        'posted_by__user__username',
-        'posted_by__name',
-        'posted_by__avatar',
+        'posted_by__username',
+        #'posted_by__user__name',
+        #'posted_by__avatar',
     )[:getattr(settings, 'LATEST_TOPIC_NUMBER', 10)]
     ctx = {
         'topics': topics,
@@ -50,9 +50,9 @@ def forum_forum(request, forum_slug, tpl="forum/forum_forum.html"):
             'created_on',
             'forum__slug',
             'forum__name',
-            'posted_by__user__username',
-            'posted_by__name',
-            'posted_by__avatar',
+            'posted_by__username',
+            #'posted_by__name',
+            #'posted_by__avatar',
         )
     ctx = {
         'forums': forums(),

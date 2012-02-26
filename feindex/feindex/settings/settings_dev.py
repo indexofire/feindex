@@ -10,6 +10,7 @@ GOOGLE_ANALYTICS = False
 INSTALLED_APPS += (
     'south',
     'debug_toolbar',
+    'apps.forum',
 )
 
 # Addtional middleware
@@ -59,3 +60,6 @@ PROFILE_EXTENSIONS = (
     'contrib.profile.extensions.title',
     'contrib.profile.modules.address.extensions.address',
 )
+
+import sys
+sys.path.append('apps')

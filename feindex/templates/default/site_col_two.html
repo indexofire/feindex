@@ -2,6 +2,7 @@
 {% load applicationcontent_tags feincms_tags feincms_page_tags mptt_tags %}
 
 {% block content %}
+<div class="container">
 <div class="row">
 <!-- auth extension start -->
   {% if feincms_page.auth and request.user.is_anonymous %}
@@ -37,7 +38,7 @@
 
   <!-- main start -->
   <div class="span9">
-    <div style="padding: 10px">
+    <div class="pad" style="padding: 10px">
     {% for content in feincms_page.content.main %}
       <div class="block">{% feincms_render_content content request %}</div>
     {% endfor %}
@@ -46,5 +47,6 @@
   <!-- main end -->
   {% endif %}
 <!-- auth extension end -->
+</div>
 </div>
 {% endblock content %}

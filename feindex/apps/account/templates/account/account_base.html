@@ -1,0 +1,11 @@
+{% load i18n applicationcontent_tags feincms_page_tags %}
+
+{% fragment request "title" %}
+{% block title %}{% endblock title%}
+{% endfragment %}
+
+{% fragment request "extra_head" %}
+{% block extra_head %}<link href="{{ STATIC_URL }}profile/css/style.css" rel="stylesheet" type="text/css" media="all" />{% endblock extra_head %}
+{% endfragment %}
+
+{% block content %}{% endblock %}

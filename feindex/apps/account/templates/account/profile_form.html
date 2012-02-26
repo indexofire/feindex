@@ -1,0 +1,29 @@
+{% extends 'account/account_base.html' %}
+{% load i18n applicationcontent_tags %}
+
+{% block title %}{% trans "account setup" %}{% endblock %}
+
+{% block content %}
+<div id="profile-header">
+  <div id="personal-info" class="fixed">
+    <a id="picture-of-you" title="{% trans 'your picture' %}" rel="prettyPhoto"><img src="{{ profile.get_mugshot_url }}"></a>
+    <h2 id="name">{{ profile.name }}</h2>
+    <h3 id="what-you-do">{% trans "Job title" %} / {% trans "Expertise" %}</h3>
+  </div>
+  {% if user.username == profile.user.username %}
+  <ul id="nav" class="fixed">
+    <li><a href="{% app_reverse 'account-profile-detail' 'account.urls' user.username %}">{% trans "view details" %}</a></li>
+    <li class="selected"><span>{% trans "edit details" %}</span></li>
+    <li><a href="{% app_reverse 'account-password-change' 'account.urls' user.username %}">{% trans "change password" %}</a></li>
+    <li><a href="{% app_reverse 'account-email-change' 'account.urls' user.username %}">{% trans "change email" %}</a></li>
+  </ul>
+  {% endif %}
+  <div class="divider"></div>
+</div>
+<form id="profile-content" class="fixed" action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+  <fieldset>
+    {{ form.as_p }}
+  </fieldset>
+  <input type="submit" value="{% trans 'save changes' %}" />
+</form>
+{% endblock %}

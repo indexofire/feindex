@@ -114,18 +114,18 @@ Page.create_content_type(
 #Page.create_content_type(TableContent)
 
 # Add forum application
-"""
+
 Page.create_content_type(
     ApplicationContent,
     APPLICATIONS=(
         ('forum.urls', _('Forum Application')),
-        ('account.urls', _('Account Application')),
-        ('news.urls', _('News Application')),
-        ('article.urls', _('Library Application')),
-        ('document.urls', _('Document Application')),
+        #('account.urls', _('Account Application')),
+        #('news.urls', _('News Application')),
+        #('article.urls', _('Library Application')),
+        #('document.urls', _('Document Application')),
     )
 )
-"""
+
 # Add form content type
 #Page.create_content_type(FormContent)
 

@@ -1,0 +1,30 @@
+{% extends 'account/account_base.html' %}
+{% load i18n applicationcontent_tags %}
+
+{% block title %}{% trans "Profiles List" %}{% endblock %}
+
+{% block content %}
+<h2 class="content-title">{% trans 'Profiles' %}</h2>
+<ul id="account-list">
+{% for profile in profile_list %}
+  <li><a href="{% app_reverse 'account-profile-detail' 'account.urls' profile.fake_name %}"><img src="{{ profile.get_avatar_url }}"><p>{{ profile.name }}</p></a></li>
+{% endfor %}
+</ul>
+
+{% if is_paginated %}
+<div class="pagination">
+  <span class="step-links">
+  {% if page_obj.has_previous %}
+    <a href="{% app_reverse 'account-profile-list-paginated' 'account.urls' page_obj.previous_page_number %}">{% trans 'previous' %}</a>
+  {% endif %}
+  <span class="current">
+  {% trans 'Page' %} {{ page_obj.number }} {% trans 'of' %} {{ page_obj.paginator.num_pages }}.
+  </span>
+  {% if page_obj.has_next %}
+    <a href="{% app_reverse 'account-profile-list-paginated' 'account.urls' page_obj.next_page_number %}">{% trans 'next' %}</a>
+  {% endif %}
+  </span>
+</div>
+{% endif %}
+
+{% endblock %}

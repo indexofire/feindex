@@ -7,7 +7,7 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User, UserManager
 from django.contrib.auth.admin import UserAdmin, csrf_protect_m
 from django.core.urlresolvers import get_callable
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 
 if getattr(settings, 'AUTH_PROFILE_MODULE', False) and \
