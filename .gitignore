@@ -27,7 +27,7 @@ settings/settings_dev.py
 .sass-cache/
 media/
 static/
-data/
+data/.secret_key
 .epio-app
 *.sublime-project
 
