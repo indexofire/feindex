@@ -86,6 +86,7 @@ class Profile(User):
     def get_profile(self):
         return self
 
+
 class ProfileAdminForm(forms.ModelForm):
     """Admin form"""
     def clean_email(self):
@@ -100,7 +101,6 @@ class ProfileAdminForm(forms.ModelForm):
                 raise forms.ValidationError(_('That email address is already \
                     in use.'))
         return email
-
 
 
 class ProfileAdmin(UserAdmin):

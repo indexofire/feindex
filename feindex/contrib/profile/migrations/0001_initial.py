@@ -1,24 +1,60 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
 import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
-
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+        
         # Adding model 'Profile'
         db.create_table('profile_profile', (
             ('user_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True, primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.OneToOneField')(blank=True, related_name='profile', unique=True, null=True, to=orm['auth.User'])),
+            ('gender', self.gf('django.db.models.fields.PositiveSmallIntegerField')(default=3, blank=True)),
+            ('birthday', self.gf('django.db.models.fields.DateField')(null=True, blank=True)),
+            ('telephone', self.gf('django.db.models.fields.CharField')(max_length=25, blank=True)),
+            ('mobile', self.gf('django.db.models.fields.CharField')(max_length=15, blank=True)),
             ('avatar', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True, blank=True)),
             ('posh_avatar', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True, blank=True)),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
         ))
         db.send_create_signal('profile', ['Profile'])
 
+        # Adding M2M table for field addresses on 'Profile'
+        db.create_table('profile_profile_addresses', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('profile', models.ForeignKey(orm['profile.profile'], null=False)),
+            ('address', models.ForeignKey(orm['profile.address'], null=False))
+        ))
+        db.create_unique('profile_profile_addresses', ['profile_id', 'address_id'])
+
+        # Adding model 'Address'
+        db.create_table('profile_address', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('profile', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['profile.Profile'])),
+            ('address1', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
+            ('address2', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
+            ('city', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
+            ('region', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
+            ('postcode', self.gf('django.db.models.fields.CharField')(max_length=15, null=True, blank=True)),
+            ('telephone', self.gf('django.db.models.fields.CharField')(max_length=32, null=True, blank=True)),
+        ))
+        db.send_create_signal('profile', ['Address'])
+
+
     def backwards(self, orm):
+        
         # Deleting model 'Profile'
         db.delete_table('profile_profile')
+
+        # Removing M2M table for field addresses on 'Profile'
+        db.delete_table('profile_profile_addresses')
+
+        # Deleting model 'Address'
+        db.delete_table('profile_address')
+
 
     models = {
         'auth.group': {
@@ -36,7 +72,7 @@ class Migration(SchemaMigration):
         },
         'auth.user': {
             'Meta': {'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
+            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 2, 27, 10, 15, 56, 17081)'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
             'groups': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Group']", 'symmetrical': 'False', 'blank': 'True'}),
@@ -44,7 +80,7 @@ class Migration(SchemaMigration):
             'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
+            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 2, 27, 10, 15, 56, 16981)'}),
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
             'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
@@ -57,10 +93,28 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
+        'profile.address': {
+            'Meta': {'object_name': 'Address'},
+            'address1': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'address2': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'city': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'postcode': ('django.db.models.fields.CharField', [], {'max_length': '15', 'null': 'True', 'blank': 'True'}),
+            'profile': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['profile.Profile']"}),
+            'region': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'telephone': ('django.db.models.fields.CharField', [], {'max_length': '32', 'null': 'True', 'blank': 'True'})
+        },
         'profile.profile': {
             'Meta': {'object_name': 'Profile', '_ormbases': ['auth.User']},
+            'addresses': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'addresses'", 'blank': 'True', 'to': "orm['profile.Address']"}),
             'avatar': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'birthday': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
+            'gender': ('django.db.models.fields.PositiveSmallIntegerField', [], {'default': '3', 'blank': 'True'}),
+            'mobile': ('django.db.models.fields.CharField', [], {'max_length': '15', 'blank': 'True'}),
             'posh_avatar': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'telephone': ('django.db.models.fields.CharField', [], {'max_length': '25', 'blank': 'True'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'user': ('django.db.models.fields.related.OneToOneField', [], {'blank': 'True', 'related_name': "'profile'", 'unique': 'True', 'null': 'True', 'to': "orm['auth.User']"}),
             'user_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['auth.User']", 'unique': 'True', 'primary_key': 'True'})
         }
     }
