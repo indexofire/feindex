@@ -21,4 +21,4 @@ class AccountAdmin(UserAdmin, GuardedModelAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, AccountAdmin)
-admin.site.register(get_profile_model())
+#admin.site.register(get_profile_model())

@@ -61,5 +61,15 @@ PROFILE_EXTENSIONS = (
     'contrib.profile.modules.address.extensions.address',
 )
 
-import sys
-sys.path.append('apps')
+#import sys
+#sys.path.append('apps')
+
+AUTHENTICATION_BACKENDS = (
+    'account.backends.AccountAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+ANONYMOUS_USER_ID = -1
+
+AUTH_PROFILE_MODULE = 'profile.Profile'

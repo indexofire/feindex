@@ -139,6 +139,7 @@ INSTALLED_APPS = (
     'feincms.module.medialibrary',
     'mptt',
     'contrib.profile',
+    'contrib.account',
     'apps.initial',
     #'apps.forum',
 )

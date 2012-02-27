@@ -10,6 +10,7 @@ from .settings import *
 from .utils import generate_sha1, get_profile_model
 from .signals import *
 from guardian.shortcuts import assign, get_perms
+#from contrib.utils.shortcuts import assign, get_perms
 
 
 SHA1_RE = re.compile('^[a-f0-9]{40}$')
