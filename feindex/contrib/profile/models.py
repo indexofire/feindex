@@ -159,7 +159,11 @@ def create_profile(sender, instance, created, **kwargs):
     """
     Post a signal to create a matching profile when a user object is created.
     """
-    if created: profile, new = Profile.objects.get_or_create(user=instance)
+    if created:
+        profile, new = Profile.objects.get_or_create(
+            user=instance,
+            email=instance.email,
+        )
 
 # Register extensions listed in the settings
 PROFILE_EXTENSIONS = getattr(settings, 'PROFILE_EXTENSIONS', None)
