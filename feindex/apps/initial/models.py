@@ -119,7 +119,7 @@ Page.create_content_type(
     ApplicationContent,
     APPLICATIONS=(
         ('forum.urls', _('Forum Application')),
-        #('account.urls', _('Account Application')),
+        ('account.urls', _('Account Application')),
         #('news.urls', _('News Application')),
         #('article.urls', _('Library Application')),
         #('document.urls', _('Document Application')),

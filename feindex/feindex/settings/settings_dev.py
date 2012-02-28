@@ -11,6 +11,7 @@ INSTALLED_APPS += (
     'south',
     'debug_toolbar',
     'apps.forum',
+    'contrib.account',
 )
 
 # Addtional middleware
@@ -61,8 +62,9 @@ PROFILE_EXTENSIONS = (
     'contrib.profile.modules.address.extensions.address',
 )
 
-#import sys
-#sys.path.append('apps')
+import sys
+sys.path.append('apps')
+sys.path.append('contrib')
 
 AUTHENTICATION_BACKENDS = (
     'account.backends.AccountAuthenticationBackend',
