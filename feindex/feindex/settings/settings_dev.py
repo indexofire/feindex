@@ -12,6 +12,7 @@ INSTALLED_APPS += (
     'debug_toolbar',
     'apps.forum',
     'contrib.account',
+    'guardian',
 )
 
 # Addtional middleware

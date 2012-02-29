@@ -76,6 +76,8 @@ class Profile(User):
         #        last_name  = self.last_name,
         #        email      = self.email,
         #        )
+        if not self.username:
+            self.username = self.first_name + self.last_name
         super(Profile, self).save(*args, **kwargs)
 
     def get_full_name(self):
@@ -108,7 +110,7 @@ class ProfileAdmin(UserAdmin):
     form = ProfileAdminForm
     add_form_template = None
     fieldsets = [
-        (None, {
+        (_('Main options'), {
             'fields': ['user', 'email', 'password', 'first_name','last_name',]
         }),
         (_('Other options'), {
@@ -116,13 +118,13 @@ class ProfileAdmin(UserAdmin):
             'fields': ['is_active', 'last_login', 'date_joined',],
         }),
     ]
-    list_display = ['username', 'email', 'first_name', 'last_name', ]
-    list_display_links = ['email',]
+    list_display = ['user', 'username', 'email', ]
+    list_display_links = ['user', 'username', 'email',]
     search_fields = ['email',  'first_name', 'last_name',]
     readonly_fields = ['last_login', 'date_joined', ]
     list_filter = ['is_active', ]
     list_display_filter = []
-    ordering = ('email',)
+    ordering = ('user', 'username', 'email',)
 
     def get_fieldsets(self, request, obj=None):
         # Override the UserAdmin add view and return it's parent.
@@ -134,7 +136,7 @@ class ProfileAdmin(UserAdmin):
         form = super(UserAdmin, self).get_form(request, obj=obj, **kwargs)
         if obj is None:
             form.base_fields['password'].help_text = ''
-
+        form.base_fields['user'].required = True
         form.base_fields['email'].required = True
         form.base_fields['first_name'].required = True
         form.base_fields['last_name'].required = True
@@ -171,3 +173,15 @@ PROFILE_EXTENSIONS = getattr(settings, 'PROFILE_EXTENSIONS', None)
 if PROFILE_EXTENSIONS and not Profile._extensions_imported:
     Profile.register_extensions(*PROFILE_EXTENSIONS)
     Profile._extensions_imported = True
+
+
+
+from feincms.models import ExtensionsMixin
+
+class NewProfile(User, ExtensionsMixin):
+    """
+    """
+    def save(self, *args, **kwargs):
+        super(NewProfile, self).save(*args, **kwargs)
+
+
