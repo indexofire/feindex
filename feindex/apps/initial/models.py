@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.utils.translation import ugettext_lazy as _
 from feincms.module.page.models import Page
-from feincms.content.application.models import ApplicationContent
+#from feincms.content.application.models import ApplicationContent
 from feincms.content.richtext.models import RichTextContent
-from feincms.content.image.models import ImageContent
+#from feincms.content.image.models import ImageContent
 #from feincms.content.comments.models import CommentsContent
-from feincms.content.medialibrary.v2 import MediaFileContent
+#from feincms.content.medialibrary.v2 import MediaFileContent
 #from feincms.content.raw.models import RawContent
 #from feincms_markup.models import MarkupContent
 #from feincms_content.form.models import FormContent
@@ -95,14 +95,14 @@ Page.register_templates(
 Page.create_content_type(RichTextContent)
 
 # Add image content type
-Page.create_content_type(
-    ImageContent,
-    POSITION_CHOICES=(
-        ('block', _('block')),
-        ('left', _('left')),
-        ('right', _('right')),
-    )
-)
+#Page.create_content_type(
+#    ImageContent,
+#    POSITION_CHOICES=(
+#        ('block', _('block')),
+#        ('left', _('left')),
+#        ('right', _('right')),
+#    )
+#)
 
 # Add markup content type
 #Page.create_content_type(MarkupContent)
@@ -115,16 +115,16 @@ Page.create_content_type(
 
 # Add forum application
 
-Page.create_content_type(
-    ApplicationContent,
-    APPLICATIONS=(
-        ('forum.urls', _('Forum Application')),
-        ('account.urls', _('Account Application')),
+#Page.create_content_type(
+#    ApplicationContent,
+#    APPLICATIONS=(
+#        ('forum.urls', _('Forum Application')),
+#        ('account.urls', _('Account Application')),
         #('news.urls', _('News Application')),
         #('article.urls', _('Library Application')),
         #('document.urls', _('Document Application')),
-    )
-)
+#    )
+#)
 
 # Add form content type
 #Page.create_content_type(FormContent)
@@ -133,13 +133,13 @@ Page.create_content_type(
 #Page.create_content_type(CommentsContent)
 
 # Add Media Library
-Page.create_content_type(
-    MediaFileContent,
-    TYPE_CHOICES=(
-        ('lightbox', _('lightbox')),
-        ('download', _('download')),
-    )
-)
+#Page.create_content_type(
+#    MediaFileContent,
+#    TYPE_CHOICES=(
+#        ('lightbox', _('lightbox')),
+#        ('download', _('download')),
+#    )
+#)
 
 # Add raw content type
 #Page.create_content_type(RawContent)
@@ -149,6 +149,3 @@ Page.create_content_type(
 
 # Add gallery content type
 #Page.create_content_type(GalleryContent)
-
-
-
