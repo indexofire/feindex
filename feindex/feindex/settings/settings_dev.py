@@ -13,6 +13,8 @@ INSTALLED_APPS += (
     'apps.forum',
     'contrib.account',
     'guardian',
+    'postman',
+    'pagination',
 )
 
 # Addtional middleware

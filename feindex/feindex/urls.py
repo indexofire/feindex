@@ -31,6 +31,8 @@ if settings.DEBUG:
             'django.views.static.serve',
             {'document_root': settings.MEDIA_ROOT},
         ),
+        #url('^' + settings.MEDIA_URL.strip('/') + r'/(?P<path>postman/.*)$', 'django.views.static.serve',
+        #    {'document_root': os.path.join(imp.find_module('postman')[1], 'medias')}),
     )
 
 urlpatterns += patterns('',

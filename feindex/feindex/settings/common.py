@@ -177,7 +177,7 @@ LOGGING = {
 AUTH_PROFILE_MODULE = 'contrib.profile.Profile'
 
 # Use new feincms reverse
-FEINCMS_REVERSE_MONKEY_PATCH = False
+FEINCMS_REVERSE_MONKEY_PATCH = True
 
 # Feincms richtext editor
 FEINCMS_RICHTEXT_INIT_CONTEXT = {
