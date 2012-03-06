@@ -11,10 +11,10 @@ INSTALLED_APPS += (
     'south',
     'debug_toolbar',
     'apps.forum',
-    'contrib.account',
-    'guardian',
-    'postman',
+    #'contrib.account',
+    #'guardian',
     'pagination',
+    'apps.message',
 )
 
 # Addtional middleware

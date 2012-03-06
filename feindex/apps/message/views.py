@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import datetime
 import urlparse
 
@@ -14,11 +15,11 @@ from django.utils.translation import ugettext as _
 
 from feincms.content.application.models import app_reverse
 
-from postman.fields import is_autocompleted
-from postman.forms import WriteForm, AnonymousWriteForm, QuickReplyForm, FullReplyForm
-from postman.models import Message, get_order_by
-from postman.urls import OPTION_MESSAGES
-from postman.utils import format_subject, format_body
+from .fields import is_autocompleted
+from .forms import WriteForm, AnonymousWriteForm, QuickReplyForm, FullReplyForm
+from .models import Message, get_order_by
+from .urls import OPTION_MESSAGES
+from .utils import format_subject, format_body
 
 ##########
 # Helpers
@@ -52,7 +53,7 @@ def _folder(request, folder_name, view_name, option, template_name):
         }, context_instance=RequestContext(request))
 
 @login_required
-def inbox(request, option=None, template_name='message/message_inbox.html'):
+def message_inbox(request, option=None, template_name='message/message_inbox.html'):
     """
     Display the list of received messages for the current user.
 
@@ -63,7 +64,7 @@ def inbox(request, option=None, template_name='message/message_inbox.html'):
         ``template_name``: the name of the template to use
 
     """
-    return _folder(request, 'inbox', 'postman_inbox', option, template_name)
+    return _folder(request, 'inbox', 'message-inbox', option, template_name)
 
 @login_required
 def sent(request, option=None, template_name='postman/sent.html'):

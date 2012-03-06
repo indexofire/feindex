@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 You may define your own custom forms, based or inspired by the following ones.
 
@@ -18,9 +19,9 @@ from django.contrib.auth.models import User
 from django.db import transaction
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from postman.fields import CommaSeparatedUserField
-from postman.models import Message
-from postman.utils import WRAP_WIDTH
+from .fields import CommaSeparatedUserField
+from .models import Message
+from .utils import WRAP_WIDTH
 
 class BaseWriteForm(forms.ModelForm):
     """The base class for other forms."""

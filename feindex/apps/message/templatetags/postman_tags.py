@@ -7,7 +7,7 @@ from django.template import Library
 from django.template.defaultfilters import date
 from django.utils.translation import ugettext_lazy as _
 
-from postman.models import ORDER_BY_MAPPER, ORDER_BY_KEY, Message
+from ..models import ORDER_BY_MAPPER, ORDER_BY_KEY, Message
 
 register = Library()
 

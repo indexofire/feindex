@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from django.contrib import admin
 from django.db import transaction
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from postman.models import Message, PendingMessage
+from .models import Message, PendingMessage
 
 class MessageAdminForm(forms.ModelForm):
     class Meta:

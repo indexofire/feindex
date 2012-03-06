@@ -47,13 +47,13 @@ from django.http import QueryDict
 from django.template import Template, Context, TemplateSyntaxError, TemplateDoesNotExist
 from django.test import TestCase
 
-from postman.fields import CommaSeparatedUserField
+from .fields import CommaSeparatedUserField
 # because of reload()'s, do "from postman.forms import xxForm" just before needs
 from postman.models import ORDER_BY_KEY, ORDER_BY_MAPPER, Message, PendingMessage,\
     STATUS_PENDING, STATUS_ACCEPTED, STATUS_REJECTED
-from postman.urls import OPTION_MESSAGES
+from .urls import OPTION_MESSAGES
 # because of reload()'s, do "from postman.utils import notification" just before needs
-from postman.utils import format_body, format_subject
+from .utils import format_body, format_subject
 
 if not 'pagination' in settings.INSTALLED_APPS:
     try:
@@ -179,7 +179,7 @@ class BaseTest(TestCase):
         except KeyError: # happens once at the setUp
             pass
         reload(get_resolver(get_urlconf()).urlconf_module)
-    
+
 class ViewTest(BaseTest):
     """
     Test the views.
@@ -916,13 +916,13 @@ class MessageManagerTest(BaseTest):
                   |<------|             x    x
                   |------>
                    ------>
-                   ------>              x    
-                   <------              
+                   ------>              x
+                   <------
                     ...---
               x       X---
         """
 
-        m1 = self.c12(moderation_status=STATUS_PENDING); 
+        m1 = self.c12(moderation_status=STATUS_PENDING);
         m2 = self.c12(moderation_status=STATUS_REJECTED, recipient_deleted_at=datetime.now())
         m3 = self.c12()
         m3.read_at, m3.thread = datetime.now(), m3
@@ -983,8 +983,8 @@ class MessageManagerTest(BaseTest):
                   |<------|   X    X    x    x
                   |------>
          X         ------>    X
-                   ------>         X    x    
-              X    <------              
+                   ------>         X    x
+              X    <------
                     ...---         X
               x       X---    X
         """
@@ -1245,7 +1245,7 @@ class MessageTest(BaseTest):
         self.check_status(r.parent, status=STATUS_ACCEPTED, thread=parent, is_replied=True)
         # accepted -> rejected: parent is no more replied
         r.update_parent(STATUS_ACCEPTED)
-        p = Message.objects.get(pk=parent.pk) 
+        p = Message.objects.get(pk=parent.pk)
         self.check_status(p, status=STATUS_ACCEPTED, thread=parent)
         # note: accepted -> rejected, with the existence of another suitable reply
         # is covered in the accepted -> pending case
@@ -1259,7 +1259,7 @@ class MessageTest(BaseTest):
         # pending -> pending: no change. In real case, parent.replied_at would be from another reply object
         r.update_parent(STATUS_PENDING)
         self.check_status(r.parent, status=STATUS_ACCEPTED, thread=parent, is_replied=True)
-        # rejected -> pending: no change. In real case, parent.replied_at would be from another reply object 
+        # rejected -> pending: no change. In real case, parent.replied_at would be from another reply object
         r.update_parent(STATUS_REJECTED)
         self.check_status(r.parent, status=STATUS_ACCEPTED, thread=parent, is_replied=True)
         # accepted -> pending: parent is still replied but by another object
@@ -1491,7 +1491,7 @@ class FiltersTest(BaseTest):
         # use 'H', 'd', 'm' instead of 'G', 'j', 'n' because no strftime equivalents
         t = Template('{% load postman_tags %}{{ date|compact_date:"'+format+'" }}')
         self.assertEqual(t.render(Context({'date': date})), value)
-    
+
     def test_compact_date(self):
         "Test '|compact_date'."
         dt = datetime.now()
@@ -1528,7 +1528,7 @@ class TagsTest(BaseTest):
         self.assertEqual(ctx['var'], 1)
         self.assertRaises(TemplateSyntaxError, self.check_postman_unread, '', self.user1, 'as var extra')
         self.assertRaises(TemplateSyntaxError, self.check_postman_unread, '', self.user1, 'As var')
-    
+
     def check_order_by(self, keyword, value_list, context=None):
         t = Template("{% load postman_tags %}{% postman_order_by " + keyword +" %}")
         r = t.render(Context({'gets': QueryDict(context)} if context else {}))

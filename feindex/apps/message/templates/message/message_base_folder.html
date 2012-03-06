@@ -1,7 +1,7 @@
-{% extends "message_base.html" %}
+{% extends "message/message_base.html" %}
 {% load i18n postman_tags pagination_tags applicationcontent_tags %}
 
-{% block message %}
+{% block content %}
 <div id="postman">
 <h1>{% block pm_folder_title %}{% endblock %}</h1>
 {% if pm_messages %}
@@ -37,7 +37,7 @@
    <td>{% if message.is_new %}<strong>{% endif %}{% if message.is_replied %}<em>{% endif %}
 {% block pm_subject %}
     <a href="{% if by_conversation and message.thread_id %}{% app_reverse 'postman_view_conversation' 'message.urls' message.thread_id %}{% else %}{{message.get_absolute_url }}{% endif %}?next={{ current_url|urlencode }}">
-    {% include "postman/inc_subject_ex.html" %}
+    {% include "message/inc_subject_ex.html" %}
     </a>
 {% endblock %}
    {% if message.is_replied %}</em>{% endif %}{% if message.is_new %}</strong>{% endif %}</td>
@@ -53,4 +53,4 @@
 {% endif %}
 {% block pm_footer_info %}{% endblock %}
 </div>
-{% endblock message %}
+{% endblock content %}

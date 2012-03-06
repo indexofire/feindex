@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import datetime
 import hashlib
 
@@ -8,8 +9,8 @@ from django.db import models
 from django.utils.text import truncate_words
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from postman.urls import OPTION_MESSAGES
-from postman.utils import email_visitor, notify_user
+from .urls import OPTION_MESSAGES
+from .utils import email_visitor, notify_user
 
 # moderation constants
 STATUS_PENDING = 'p'
@@ -41,7 +42,7 @@ def get_order_by(query_dict):
     ``query_dict``: a dictionary to look for a key dedicated to ordering purpose
 
     >>> get_order_by({})
-    
+
     >>> get_order_by({ORDER_BY_KEY: 'f'})
     'sender__username'
     >>> get_order_by({ORDER_BY_KEY: 'D'})
@@ -87,8 +88,8 @@ class MessageManager(models.Manager):
             return qs.filter(
                 models.Q(id__in=self._last_in_thread.filter(lookups)) | models.Q(lookups, thread__isnull=True)
             ).extra(select={'count': QUOTE_CHAR.join([
-            'SELECT COUNT(*) FROM ', 'postman_message', ' T'
-            ' WHERE T.', 'thread_id', ' = ', 'postman_message', '.', 'thread_id', ' '
+            'SELECT COUNT(*) FROM ', 'message_message', ' T'
+            ' WHERE T.', 'thread_id', ' = ', 'message_message', '.', 'thread_id', ' '
             ])})
             # For single message, 'count' is returned as 0. Should be acceptable if known.
             # If not, replace "COUNT(*)" by "1+COUNT(*)" and add:
@@ -115,7 +116,7 @@ class MessageManager(models.Manager):
 
         """
         return self.inbox(user, related=False, option=OPTION_MESSAGES).filter(read_at__isnull=True).count()
-    
+
     def sent(self, user, **kwargs):
         """
         Return all messages sent by a user but not marked as archived or deleted.

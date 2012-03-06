@@ -7,7 +7,7 @@ from django.conf.urls.defaults import *
 from django.forms import ValidationError
 from django.views.generic.simple import redirect_to
 
-from postman.urls import OPTIONS
+from .urls import OPTIONS
 
 # user_filter function set
 def user_filter_reason(user):
