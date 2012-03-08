@@ -117,7 +117,7 @@ class MessageManager(models.Manager):
         """
         return self.inbox(user, related=False, option=OPTION_MESSAGES).filter(read_at__isnull=True).count()
 
-    def sent(self, user, **kwargs):
+    def send(self, user, **kwargs):
         """
         Return all messages sent by a user but not marked as archived or deleted.
         """

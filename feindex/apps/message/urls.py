@@ -93,18 +93,17 @@ OPTION_MESSAGES = 'm'
 OPTIONS = OPTION_MESSAGES
 
 urlpatterns = patterns('apps.message.views',
-    #url(r'^inbox/(?:(?P<option>'+OPTIONS+')/)?$', 'inbox', name='postman_inbox'),
     url(r'^inbox/(?:(?P<option>'+OPTIONS+')/)?$', 'message_inbox', name='message-inbox'),
-    url(r'^sent/(?:(?P<option>'+OPTIONS+')/)?$', 'sent', name='postman_sent'),
-    url(r'^archives/(?:(?P<option>'+OPTIONS+')/)?$', 'archives', name='postman_archives'),
-    url(r'^trash/(?:(?P<option>'+OPTIONS+')/)?$', 'trash', name='postman_trash'),
-    url(r'^write/(?:(?P<recipients>[\w.@+-:]+)/)?$', 'write', name='postman_write'),
-    url(r'^reply/(?P<message_id>[\d]+)/$', 'reply', name='postman_reply'),
-    url(r'^view/(?P<message_id>[\d]+)/$', 'view', name='postman_view'),
-    url(r'^view/t/(?P<thread_id>[\d]+)/$', 'view_conversation', name='postman_view_conversation'),
-    url(r'^archive/$', 'archive', name='postman_archive'),
-    url(r'^delete/$', 'delete', name='postman_delete'),
-    url(r'^undelete/$', 'undelete', name='postman_undelete'),
+    url(r'^send/(?:(?P<option>'+OPTIONS+')/)?$', 'message_send', name='message-send'),
+    url(r'^archives/(?:(?P<option>'+OPTIONS+')/)?$', 'archives', name='message-archives'),
+    url(r'^trash/(?:(?P<option>'+OPTIONS+')/)?$', 'trash', name='message-trash'),
+    url(r'^write/(?:(?P<recipients>[\w.@+-:]+)/)?$', 'write', name='message-write'),
+    url(r'^reply/(?P<message_id>[\d]+)/$', 'reply', name='message-reply'),
+    url(r'^view/(?P<message_id>[\d]+)/$', 'view', name='message-view'),
+    url(r'^view/t/(?P<thread_id>[\d]+)/$', 'view_conversation', name='message-view-conversation'),
+    url(r'^archive/$', 'archive', name='message-archive'),
+    url(r'^delete/$', 'delete', name='message-delete'),
+    url(r'^undelete/$', 'undelete', name='message-undelete'),
     (r'^$', redirect_to, {'url': 'inbox/'}),
 )
 

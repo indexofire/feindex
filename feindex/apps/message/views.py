@@ -67,37 +67,37 @@ def message_inbox(request, option=None, template_name='message/message_inbox.htm
     return _folder(request, 'inbox', 'message-inbox', option, template_name)
 
 @login_required
-def sent(request, option=None, template_name='postman/sent.html'):
+def message_send(request, option=None, template_name='message/message_send.html'):
     """
     Display the list of sent messages for the current user.
 
     Optional arguments: refer to inbox()
 
     """
-    return _folder(request, 'sent', 'postman_sent', option, template_name)
+    return _folder(request, 'send', 'message-send', option, template_name)
 
 @login_required
-def archives(request, option=None, template_name='postman/archives.html'):
+def archives(request, option=None, template_name='message/message_archives.html'):
     """
     Display the list of archived messages for the current user.
 
     Optional arguments: refer to inbox()
 
     """
-    return _folder(request, 'archives', 'postman_archives', option, template_name)
+    return _folder(request, 'archives', 'message-archives', option, template_name)
 
 @login_required
-def trash(request, option=None, template_name='postman/trash.html'):
+def trash(request, option=None, template_name='message/message_trash.html'):
     """
     Display the list of deleted messages for the current user.
 
     Optional arguments: refer to inbox()
 
     """
-    return _folder(request, 'trash', 'postman_trash', option, template_name)
+    return _folder(request, 'trash', 'message-trash', option, template_name)
 
 def write(request, recipients=None, form_classes=(WriteForm, AnonymousWriteForm), autocomplete_channels=None,
-        template_name='postman/write.html', success_url=None,
+        template_name='message/message_write.html', success_url=None,
         user_filter=None, exchange_filter=None, max=None, auto_moderators=[]):
     """
     Display a form to compose a message.
@@ -132,7 +132,7 @@ def write(request, recipients=None, form_classes=(WriteForm, AnonymousWriteForm)
                 messages.success(request, _("Message successfully sent."), fail_silently=True)
             else:
                 messages.warning(request, _("Message rejected for at least one recipient."), fail_silently=True)
-            return redirect(request.GET.get('next', success_url or next_url or 'postman_inbox'))
+            return redirect(request.GET.get('next', success_url or next_url or 'message-inbox'))
     else:
         initial = dict(request.GET.items()) # allow optional initializations by query string
         if recipients:
@@ -155,7 +155,7 @@ if getattr(settings, 'POSTMAN_DISALLOW_ANONYMOUS', False):
 
 @login_required
 def reply(request, message_id, form_class=FullReplyForm, formatters=(format_subject,format_body), autocomplete_channel=None,
-        template_name='postman/reply.html', success_url=None,
+        template_name='message/message_reply.html', success_url=None,
         user_filter=None, exchange_filter=None, max=None, auto_moderators=[]):
     """
     Display a form to compose a reply.
@@ -192,7 +192,7 @@ def reply(request, message_id, form_class=FullReplyForm, formatters=(format_subj
                 messages.success(request, _("Message successfully sent."), fail_silently=True)
             else:
                 messages.warning(request, _("Message rejected for at least one recipient."), fail_silently=True)
-            return redirect(request.GET.get('next', success_url or next_url or 'postman_inbox'))
+            return redirect(request.GET.get('next', success_url or next_url or 'message-inbox'))
     else:
         initial.update(request.GET.items()) # allow overwriting of the defaults by query string
         form = form_class(initial=initial, channel=autocomplete_channel)
@@ -204,7 +204,7 @@ def reply(request, message_id, form_class=FullReplyForm, formatters=(format_subj
         }, context_instance=RequestContext(request))
 
 def _view(request, filter, form_class=QuickReplyForm, formatters=(format_subject,format_body),
-        template_name='postman/view.html'):
+        template_name='message/message_view.html'):
     """
     Code common to the by-message and by-conversation views.
 
@@ -237,7 +237,7 @@ def _view(request, filter, form_class=QuickReplyForm, formatters=(format_subject
             'archived': archived,
             'reply_to_pk': received.pk if received else None,
             'form' : form_class(initial=received.quote(*formatters)) if received else None,
-            'next_url': request.GET.get('next', reverse('postman_inbox')),
+            'next_url': request.GET.get('next', reverse('message-inbox')),
             }, context_instance=RequestContext(request))
     raise Http404
 
@@ -265,7 +265,7 @@ def _update(request, field_bit, success_msg, field_value=None, success_url=None)
     """
     if not request.method == 'POST':
         raise Http404
-    next_url = _get_referer(request) or 'postman_inbox'
+    next_url = _get_referer(request) or 'message-inbox'
     pks = request.POST.getlist('pks')
     tpks = request.POST.getlist('tpks')
     if pks or tpks:

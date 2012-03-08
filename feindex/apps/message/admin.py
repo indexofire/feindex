@@ -7,10 +7,14 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from .models import Message, PendingMessage
 
 class MessageAdminForm(forms.ModelForm):
+    """
+    Admin form of message model.
+    """
     class Meta:
         model = Message
+
     class Media:
-        css = { "all": ("postman/css/admin.css",) }
+        css = {"all": ("message/css/admin.css",)}
 
     def clean(self):
         """Check data validity and coherence."""
@@ -76,6 +80,9 @@ class MessageAdminForm(forms.ModelForm):
         return cleaned_data
 
 class MessageAdmin(admin.ModelAdmin):
+    """
+    Message admin class.
+    """
     form = MessageAdminForm
     search_fields = ('subject', 'body')
     date_hierarchy = 'sent_at'

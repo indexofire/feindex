@@ -1,6 +1,8 @@
-{% extends "postman/base.html" %}
-{% load i18n %}
-{% block extrahead %}{{ block.super }}
+{% extends "message/message_base.html" %}
+{% load i18n applicationcontent_tags %}
+
+{% block extrahead %}
+{{ block.super }}
 {% if is_autocompleted %}
 {# using the available admin jQuery is enough #}
 <script type="text/javascript" src="{% load adminmedia %}{% admin_media_prefix %}js/jquery.min.js"></script>

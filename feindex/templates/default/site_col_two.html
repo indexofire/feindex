@@ -10,8 +10,9 @@
   {% else %}
   <!-- menu start -->
   <div class="span3">
+    <div class="pad" style="padding: 10px">
   <h3>
-    {% block menu_title %}实验室{% endblock menu_title %}
+    {% block menu_title %}{% endblock menu_title %}
   </h3>
   {% feincms_navigation of feincms_page as nodes level=2,depth=2 %}
   {% if nodes %}
@@ -33,6 +34,7 @@
   {% for content in feincms_page.content.left %}
     <div class="block">{% feincms_render_content content request %}</div>
   {% endfor %}
+  </div>
   </div>
   <!-- menu end -->
 
